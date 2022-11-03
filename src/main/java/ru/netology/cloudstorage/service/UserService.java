@@ -25,7 +25,6 @@ public class UserService implements UserDetailsService {
         Users myUser = userRepository.findByLogin(username)
                 .orElseThrow(() -> new UnauthorizedException("Unauthorized error"));
         List<GrantedAuthority> authorities = new ArrayList<>();
-        //authorities.add(new SimpleGrantedAuthority("READ"));
         return User.builder()
                 .username(myUser.getLogin())
                 .password(myUser.getPassword())
